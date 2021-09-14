@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="icon" href="images/icon.png">
+    <script>
+        // function mes(message, type){
+        //     var wrapper = document.getElementById();
+        //     wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+            
+        // }
+        function mes(message, type,under){
+            var wrapper = document.createElement('div')
+            wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+            document.getElementById(under).append(wrapper);
+
+        }
+        function valid(){
+            var name=document.getElementById('exampleInputname').value;
+            var userid=document.getElementById('exampleInputid').value;
+            var emailid=document.getElementById('exampleInputEmail1').value;
+            var pass1=document.getElementById('exampleInputPassword1').value;
+            var pass2=document.getElementById('exampleInputPassword2').value;
+            var add1=document.getElementById('inputAddress').value;
+            var add2=document.getElementById('inputAddress2').value;
+            var city=document.getElementById('inputCity').value;
+            var zip=document.getElementById('inputZip').value;
+            var cname=/^[a-z A-Z]{2,30}$/;
+            var cuserid=/^(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]+$/;
+            var cemail=/^[a-zA-z0-9]+@+$/;
+            var cpass= /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+            var czip=/^[0-9]{4}$/;
+            if(name==""||userid==""||emailid==""||pass1==""||add1==""||add2==""||city==""||zip==""){
+                mes('fill all the forms', 'warning','alerts');
+            }
+            else if(!(cname.test(name))){
+               mes('Use alpahabets only', 'danger','nameHelp');
+               document.getElementById('exampleInputname').focus();
+            }
+            else if(!(cuserid.test(userid))){
+                mes('Use the above format to create id', 'danger','idHelp');
+                document.getElementById('exampleInputid').focus();
+                
+            }
+            else if (!(cemail.test(emailid))){
+                mes('enter a vaild email id', 'danger','emailHelp');
+                document.getElementById('exampleInputEmail1').focus();
+            }
+            else if(!(cpass.test(pass1))){
+                mes('Use the above format ', 'danger','pass1Help');
+                document.getElementById('exampleInputPassword1').focus();
+            }
+            else if(pass1!=pass2){
+                mes('Password not match', 'danger','pass2Help');
+                document.getElementById('exampleInputPassword2').focus();
+            }
+            else if(!(czip.test(zip))){
+                mes('enter a vaild zip of four digit', 'danger','alerts');
+                document.getElementById('inputZip').focus();
+            }
+            else{
+                mes('from submit success', 'success','alerts');  
+            }
+        }
+
+    </script>
+
+</head>
+<body >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-dark font-weight-bold " href="#"><img src="images/logo.jpg" alt="company logo" height="40px" width="80px"><h3 class="d-inline"> Shop</h3></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+           <ul class="navbar-nav m-auto">
+               <li class="nav-item"> <a href="" class="nav-link text-info navText">HOME</a></li>
+               <li class="nav-item"> <a href="" class="nav-link text-dark navText">SHOP</a></li>
+               <li class="nav-item"> <a href="" class="nav-link text-dark navText">PICNIC</a></li>
+               <li class="nav-item"> <a href="" class="nav-link text-dark navText">PAGE</a></li>
+               <li class="nav-item"> <a href="" class="nav-link text-dark navText">PROMOTION</a></li>
+               <li class="nav-item"> <a href="" class="nav-link text-dark navText">BLOG</a></li>
+               <li class="nav-item"> <a href="register.html" class="nav-link text-dark navText">CONTACT US</a></li>
+           </ul>
+           <div class="d-flex me-0">
+                <span class="fa fa-search"> </span>
+                <span class="fa fa-shopping-cart ms-4"> </span>
+                <span class="fas fa-list ms-4 "> </span>
+            </div>
+        </div>
+        </div>
+     </nav><br><br><br>
+     <main style="background-color:whitesmoke;">
+        <div class="container bg-white">
+            <form action="#" class="mb-3">
+                <div id="alerts"></div>
+                <div class="mb-3">
+                    <label for="exampleInputname" class="form-label">User Name</label>
+                    <input type="text" class="form-control" id="exampleInputname" aria-describedby="namelHelp">
+                    <div id="nameHelp" class="form-text">name as per adhar card.</div>
+                  </div>
+                <div class="mb-3">
+                    <label for="exampleInputid" class="form-label">User ID</label>
+                    <input type="text" class="form-control" id="exampleInputid" aria-describedby="idlHelp">
+                    <div id="idHelp" class="form-text">use atleast one uppercase and number.</div>
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"> create Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1"  aria-describedby="pass1Help">
+                  <div id="pass1Help" class="form-text">use special symbols atleast a uppercase and a nunder.</div>
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">R-write Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" aria-describedby="pass2Help">
+                  <div id="pass2Help" class="form-text">type the same password again.</div>
+
+                  </div >
+                  <div class="mb-3">
+                  <label class="form-label">Gender</label>
+                  <div class="form-check ">
+                    <input class="form-check-input" type="radio" name="gender" id="male">
+                    <label class="form-check-label" for="male">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" checked>
+                    <label class="form-check-label" for="female">
+                      Female
+                    </label>
+                  </div>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                      <label for="inputAddress" class="form-label">Address</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+                    <div class="col-12">
+                      <label for="inputAddress2" class="form-label">Address 2</label>
+                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputCity" class="form-label">City</label>
+                      <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputState" class="form-label">State</label>
+                      <select id="inputState" class="form-select">
+                        <option selected>INDIA</option>
+                        <option selected>AMERICA</option>
+                        <option selected>CHINA</option>
+                        <option selected>JAPAN</option>
+                        <option selected>PARIS</option>
+                        <option selected>LONDON</option>
+                        
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="inputZip" class="form-label">Zip</label>
+                      <input type="text" class="form-control" id="inputZip">
+                    </div>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" required>
+                        <label class="form-check-label text-danger" for="flexCheckIndeterminate">
+                          by checking this you agree to all the terms & condition *
+                        </label>
+                      </div>
+                
+                <button type="submit" class="btn btn-primary" onclick="valid()">Submit</button>
+              </form>
+           </div>
+    
+          <section class=" container-fliud text-center bg-dark" style=" padding: 3rem 12rem;"><img src="images/logo.jpg" class="rounded-pill" height="50px" width="100px"><br><br>
+            
+             <p class="text-light d-inline navText" style="font-family:'Merienda One', cursive; line-height: 2;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae doloribus voluptas amet, numquam eos recusandae eius laboriosam ut debitis, praesentium est dolorum voluptates vel veniam nulla! Deserunt nesciunt odio asperiores.</p><br>
+             
+             <i class='fas fa-circle text-info' style="font-size:5px; "></i>
+             <i class='fas fa-circle text-danger' style="font-size:5px; margin-left:10px;"></i>
+             <i class='fas fa-circle text-warning' style="font-size:5px; margin-left:10px;"></i>
+             <br><br>
+             <img src="images/card1.png" height="15px" width="25px" class="m-1">
+             <img src="images/card2.png" height="15px" width="25px" class="m-1">
+             <img src="images/card3.png" height="15px" width="25px" class="m-1">
+             <img src="images/card1.png" height="15px" width="25px" class="m-1">
+             <img src="images/card2.png" height="15px" width="25px" class="m-1">
+             <img src="images/card3.png" height="15px" width="25px" class="m-1">
+           </section>
+           
+          
+           <footer class="conatainer-fluid text-center p-3">
+            <p class="navText">Copyright@2021 Designed by <span class="text-info">Paras Saxena</span> All Right Reserved</p>
+           </footer>
+     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

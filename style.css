@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Merienda+One&display=swap');
+.navText{
+    font-size: 12px;
+}
+.links{
+    text-decoration: none;
+    font-size: 14px;
+}
+.mycards{
+    background-color: white; 
+
+     width:210px;
+
+}
